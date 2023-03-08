@@ -39,18 +39,7 @@ function App() {
 
   return (
     <>
-      <label>
-        <img src={Coin} alt='Icono-Persoa' />
-        <input value={Importe} onInput={TotalImporte} />
-      </label>
-      <label>
-        <img src={people} alt='Icono-Persoa' />
-        <input value={NumeroPersoas} onInput={TotalPersoas} />
-      </label>
-      <button />
-
-      {Usuarios}
-
+      <Desglose/>
     </>
   );
 }
