@@ -13,7 +13,7 @@ function Desglose(props) {
     let NovoResultadoOperacion
     setResultadoOperacion(NovoResultadoOperacion)
   },
-    [Aportacion, props]
+    [Aportacion, props.total]
   )
 
   function AportacionPorPersoa(evento) {
@@ -27,6 +27,7 @@ function Desglose(props) {
 
   function TotalAPagar(props) {
     const PagoPorPersoa = Aportacion - props.Total
+    setResultadoOperacion(PagoPorPersoa)
   }
 
 
@@ -48,7 +49,7 @@ function Desglose(props) {
             </label>
           </div>
           <div className="col-sm">
-            <Saldo />
+            <Saldo/>
           </div>
         </div>
       </div>
