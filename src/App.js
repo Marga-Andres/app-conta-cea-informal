@@ -1,45 +1,60 @@
 import { useEffect, useState } from "react"
 import Coin from './img/€-sen-fondo.png'
 import people from './img/xente-sen-fondo.png'
-import Desglose from "./compoñentes/Desglose"
-
-
+import Aportacion from "./compoñentes/Aportacion"
 
 function App() {
 
-  const [Importe, setImporte] = useState()
-  const [NumeroPersoas, setNumeroPersoas] = useState()
+  const [Total, setTotal] = useState()
+  const [Participantes, setParticipantes] = useState()
+  const [ResultadoConta, setResultadoConta] = useState()
   const [Usuarios, setUsuarios] = useState([])
+
+  function TotalImporte(evento) {
+    const novoImporte = evento.target.value
+    const valorImporte = parseFloat(novoImporte)
+    setTotal(valorImporte)
+  }
+
+  function TotalParticipantes(evento) {
+    const novoParticipantes = evento.target.value
+    const valorParticipantes = parseInt(novoParticipantes)
+    setParticipantes(valorParticipantes)
+  }
+
+  function Operacion() {
+    const NovoValor = Total / Participantes
+    setResultadoConta(NovoValor)
+  }
 
   useEffect(
     () => {
       const NovoNumeroUsuarios = []
       let contador = 0
-      while (contador < NumeroPersoas) {
-        NovoNumeroUsuarios.push(<Desglose/>)
+      while (contador < Participantes) {
+        NovoNumeroUsuarios.push(<Aportacion key={contador++}/>)
         contador++
       }
       setUsuarios(NovoNumeroUsuarios)
     },
-    []
+    [Participantes]
   )
-
-
-  function TotalImporte(evento) {
-    const novoImporte = evento.target.value
-    const ValorImporte = parseFloat(novoImporte)
-    setImporte(ValorImporte)
-  }
-
-  function TotalPersoas(evento) {
-    const novoPersoas = evento.target.value
-    const ValorPersoas = parseInt(novoPersoas)
-    setNumeroPersoas(ValorPersoas)
-  }
 
   return (
     <>
-      <Desglose/>
+      <label>
+        <img src={Coin} alt='Icono-Persoa' />
+        <input type='number' value={Total} onInput={TotalImporte} />
+      </label>
+      <label>
+        <img src={people} alt='Icono-Persoa' />
+        <input type='range' min={2} max={20} value={Participantes} list="number" onInput={TotalParticipantes} />
+        <output>{Participantes}</output>
+      </label>
+      <button value={ResultadoConta} onClick={Operacion}>
+        Calcular
+      </button>
+      {Usuarios}
     </>
   );
 }

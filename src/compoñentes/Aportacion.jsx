@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Saldo from './Saldo.jsx'
 
 
-function Desglose(props) {
+function Aportacion({ResultadoConta}) {
 
   const [Aportacion, setAportacion] = useState()
   const [Nome, setNome] = useState()
@@ -13,27 +13,28 @@ function Desglose(props) {
     let NovoResultadoOperacion
     setResultadoOperacion(NovoResultadoOperacion)
   },
-    [Aportacion, props.total]
+    [Aportacion, ResultadoConta]
   )
 
   function AportacionPorPersoa(evento) {
-    const NovaAportacion = parseFloat(evento.target.value)
-    setAportacion(NovaAportacion)
+    const novaAportacion = evento.target.value
+    const valorAportacion = parseFloat(novaAportacion)
+    setAportacion(valorAportacion)
   }
 
   function NomePersoa() {
-    setNome(Nome)
+    setNome(Nome.target.value)
   }
 
   function TotalAPagar(props) {
-    const PagoPorPersoa = Aportacion - props.Total
+    const PagoPorPersoa = Aportacion - ResultadoConta
     setResultadoOperacion(PagoPorPersoa)
   }
 
 
   return (
     <>
-      <div className="container card">
+      <div className="container-sm card">
         <div className="row card-body">
           <div className="col-sm">
             <img src={IconoPersoa} alt='Icono-Persoa' />
@@ -49,7 +50,7 @@ function Desglose(props) {
             </label>
           </div>
           <div className="col-sm">
-            <Saldo/>
+            <Saldo onInput={TotalAPagar} readonly/>
           </div>
         </div>
       </div>
@@ -57,4 +58,4 @@ function Desglose(props) {
   );
 }
 
-export default Desglose;
+export default Aportacion;
