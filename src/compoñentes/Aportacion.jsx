@@ -1,9 +1,9 @@
 import IconoPersoa from './Icono-persoa.png'
 import { useEffect, useState } from "react";
-import Saldo from './Saldo.jsx'
+import Saldo from '../componentes/Saldo/Saldo';
 
 
-function Aportacion({ResultadoConta}) {
+function Aportacion({resultado}) {
 
   const [Aportacion, setAportacion] = useState()
   const [Nome, setNome] = useState()
@@ -13,7 +13,7 @@ function Aportacion({ResultadoConta}) {
     let NovoResultadoOperacion
     setResultadoOperacion(NovoResultadoOperacion)
   },
-    [Aportacion, ResultadoConta]
+    [Aportacion, resultado]
   )
 
   function AportacionPorPersoa(evento) {
@@ -26,8 +26,8 @@ function Aportacion({ResultadoConta}) {
     setNome(Nome.target.value)
   }
 
-  function TotalAPagar(props) {
-    const PagoPorPersoa = Aportacion - ResultadoConta
+  function TotalAPagar({resultado}) {
+    const PagoPorPersoa = Aportacion - Resultado
     setResultadoOperacion(PagoPorPersoa)
   }
 
@@ -50,7 +50,7 @@ function Aportacion({ResultadoConta}) {
             </label>
           </div>
           <div className="col-sm">
-            <Saldo onInput={TotalAPagar} readonly/>
+            <Saldo saldo={ResultadoOperacion} onInput={TotalAPagar}/>
           </div>
         </div>
       </div>

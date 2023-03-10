@@ -7,7 +7,7 @@ function App() {
 
   const [Total, setTotal] = useState()
   const [Participantes, setParticipantes] = useState()
-  const [ResultadoConta, setResultadoConta] = useState()
+  const [Resultado, setResultado] = useState()
   const [Usuarios, setUsuarios] = useState([])
 
   function TotalImporte(evento) {
@@ -24,7 +24,7 @@ function App() {
 
   function Operacion() {
     const NovoValor = Total / Participantes
-    setResultadoConta(NovoValor)
+    setResultado(NovoValor)
   }
 
   useEffect(
@@ -32,7 +32,7 @@ function App() {
       const NovoNumeroUsuarios = []
       let contador = 0
       while (contador < Participantes) {
-        NovoNumeroUsuarios.push(<Aportacion key={contador++}/>)
+        NovoNumeroUsuarios.push(<Aportacion/>)
         contador++
       }
       setUsuarios(NovoNumeroUsuarios)
@@ -48,12 +48,12 @@ function App() {
       </label>
       <label>
         <img src={people} alt='Icono-Persoa' />
-        <input type='range' min={2} max={20} value={Participantes} list="number" onInput={TotalParticipantes} />
-        <output>{Participantes}</output>
+        <input type='number' value={Participantes} list="number" onInput={TotalParticipantes} />
       </label>
-      <button value={ResultadoConta} onClick={Operacion}>
+      <button value={Resultado} onClick={Operacion}>
         Calcular
       </button>
+      <Aportacion value={resultado}/>
       {Usuarios}
     </>
   );
