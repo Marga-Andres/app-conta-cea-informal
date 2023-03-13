@@ -10,8 +10,8 @@ function Aportacion({resultado}) {
   const [ContaOperacion, setContaOperacion] = useState()
 
   useEffect(() => {
-    let NovoResultadoOperacion
-    setContaOperacion(NovoResultadoOperacion)
+    let ContaOperacion = Aportacion - resultado
+    setContaOperacion(ContaOperacion)
   },
     [Aportacion, resultado]
   )
@@ -22,15 +22,9 @@ function Aportacion({resultado}) {
     setAportacion(valorAportacion)
   }
 
-  function NomePersoa() {
+  function NomePersoa(Nome) {
     setNome(Nome.target.value)
   }
-
-  function TotalAPagar() {
-    const PagoPorPersoa = Aportacion - resultado
-    setContaOperacion(PagoPorPersoa)
-  }
-
 
   return (
     <>
@@ -50,7 +44,7 @@ function Aportacion({resultado}) {
             </label>
           </div>
           <div className="col-sm">
-            <Saldo saldo={ContaOperacion} onInput={TotalAPagar}/>
+            <Saldo saldo={ContaOperacion}/>
           </div>
         </div>
       </div>

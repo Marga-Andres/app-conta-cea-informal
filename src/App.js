@@ -22,23 +22,29 @@ function App() {
     setParticipantes(valorParticipantes)
   }
 
-  function Operacion() {
-    const NovoValor = Total / Participantes
-    setResultadoOperacion(NovoValor)
-  }
+  useEffect(()=>{
+    let ResultadoOperacion = Total / Participantes
+    setResultadoOperacion(ResultadoOperacion)
+  },
+  [Total, Participantes]
+  )
+
 
   useEffect(
     () => {
       const NovoNumeroUsuarios = []
       let contador = 0
       while (contador < Participantes) {
-        NovoNumeroUsuarios.push(<Aportacion/>)
-        contador++
+        NovoNumeroUsuarios.push(<Aportacion
+          resultado={ResultadoOperacion}
+          key={contador++}/>)        
       }
       setUsuarios(NovoNumeroUsuarios)
     },
-    [Participantes]
+    [Usuarios]
   )
+
+
 
   return (
     <>
@@ -50,7 +56,6 @@ function App() {
         <img src={people} alt='Icono-Persoa' />
         <input type='number' value={Participantes} list="number" onInput={TotalParticipantes} />
       </label>
-      <Aportacion resultado={ResultadoOperacion}/>
       {Usuarios}
     </>
   );
