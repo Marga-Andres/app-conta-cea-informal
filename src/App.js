@@ -44,17 +44,17 @@ function App() {
   )
 
   return (
-    <>
-      <label>
+    <main>
+      <label className="InputImporte">
         <img src={Coin} alt='Icono-Persoa' />
         <input type='number' value={Total} onInput={TotalImporte} />
       </label>
-      <label>
+      <label className="InputPersoas">
         <img src={people} alt='Icono-Persoa' />
-        <input type='number' value={Participantes} list="number" onInput={TotalParticipantes} />
+        <input type='range' min={2} max={20} value={Participantes} list="number" onInput={TotalParticipantes} />
       </label>
       {Usuarios}
-    </>
+    </main>
   );
 }
 

@@ -1,3 +1,23 @@
 body {
   margin: 0;
+  background-color: rgba(250, 235, 215, 0.301);
+}
+
+main {
+  text-align: center;
+  font-size: large;
+}
+
+.InputImporte {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+}
+
+.InputPersoas {
+  font-size: 1.1rem;
+  padding: 0.5rem;
+}
+
+.card-body {
+  align-items: center;
 }
