@@ -5,9 +5,9 @@ import Saldo from '../componentes/Saldo/Saldo';
 
 function Aportacion({resultado}) {
 
-  const [Aportacion, setAportacion] = useState()
-  const [Nome, setNome] = useState()
-  const [ContaOperacion, setContaOperacion] = useState()
+  const [Aportacion, setAportacion] = useState(0)
+  const [Nome, setNome] = useState("")
+  const [ContaOperacion, setContaOperacion] = useState(0)
 
   useEffect(() => {
     let ContaOperacion = Aportacion - resultado

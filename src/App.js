@@ -5,9 +5,9 @@ import Aportacion from "./compoñentes/Aportacion"
 
 function App() {
 
-  const [Total, setTotal] = useState()
-  const [Participantes, setParticipantes] = useState()
-  const [ResultadoOperacion, setResultadoOperacion] = useState()
+  const [Total, setTotal] = useState(0)
+  const [Participantes, setParticipantes] = useState(2)
+  const [ResultadoOperacion, setResultadoOperacion] = useState(0)
   const [Usuarios, setUsuarios] = useState([])
 
   function TotalImporte(evento) {
@@ -29,7 +29,6 @@ function App() {
   [Total, Participantes]
   )
 
-
   useEffect(
     () => {
       const NovoNumeroUsuarios = []
@@ -41,23 +40,21 @@ function App() {
       }
       setUsuarios(NovoNumeroUsuarios)
     },
-    [Usuarios]
+    [Participantes, ResultadoOperacion]
   )
 
-
-
   return (
-    <>
-      <label>
+    <main>
+      <label className="InputImporte">
         <img src={Coin} alt='Icono-Persoa' />
         <input type='number' value={Total} onInput={TotalImporte} />
       </label>
-      <label>
+      <label className="InputPersoas">
         <img src={people} alt='Icono-Persoa' />
-        <input type='number' value={Participantes} list="number" onInput={TotalParticipantes} />
+        <input type='range' min={2} max={20} value={Participantes} list="number" onInput={TotalParticipantes} />
       </label>
       {Usuarios}
-    </>
+    </main>
   );
 }
 

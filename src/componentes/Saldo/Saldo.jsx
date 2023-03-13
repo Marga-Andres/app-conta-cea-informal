@@ -7,9 +7,9 @@ function Saldo({ saldo }) {
 
   return (
     <>
-      {saldo < 0 && <p>Deben cartos {saldo} <DebenCartos /></p>}
-      {saldo > 0 && <p>Debes cartos {saldo} <DebesCartos /></p>}
-      {saldo === 0 && <p>Igual a cero {saldo} <IgualCero /></p>}
+      {saldo > 0 && <p>Debenche {saldo} <DebenCartos/></p>}
+      {saldo < 0 && <p>Debes {saldo} <DebesCartos/></p>}
+      {saldo === 0 && <p>Igual a cero {saldo} <IgualCero/></p>}
     </>
   )
 
